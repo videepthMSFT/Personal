@@ -10,11 +10,24 @@ var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.pageHeader = "Employee Details";
+        this.imagePath = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyXyXiDSn8J5wQc8ESXxLOfVS2e-O1tz_vwc4XEiIYsSXFY75-qg';
+        this.firstName = 'Tom';
+        this.Name = 'Tom';
+        this.lastName = 'Hopkins';
+        this.classesToApply = "boldClass italicClass";
+        this.applyBoldClass = false;
+        this.isBold = true;
     }
+    AppComponent.prototype.getFullName = function () {
+        return this.firstName + ' ' + this.lastName;
+    };
+    AppComponent.prototype.onClick = function () {
+        console.log('Button clicked');
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div>\n                    <h1>{{pageHeader}}</h1>                \n                </div>\n                <my-employee></my-employee>"
+            template: "<div>\n                    <h1>{{pageHeader ? pageHeader: 'No Header'}}</h1>                \n                <img [src]='imagePath'/>\n                <h2>{{getFullName()}}</h2>\n                </div>\n                <my-employee></my-employee>\n<br/>\n<br/>\n<br/>\n<button class=\"colorClass\" [class]='classesToApply'>My Button</button>\n<br/>\n<br/>\n<button class=\"colorClass\" [class.boldClass]='applyBoldClass'>My Button</button>\n<button style='color:red' [style.font-weight]=\"isBold?'bold':'normal'\">My Buttons</button>\n\n<button (click)='onClick()'>Click Me</button>\n\nName: <input [(ngModel)]='Name'/>\n        <br/>\n        You Entered: {{Name}}\n\n<list-employee>\n</list-employee>\n"
         })
     ], AppComponent);
     return AppComponent;

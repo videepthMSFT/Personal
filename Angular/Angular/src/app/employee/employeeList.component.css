@@ -1,4 +1,6 @@
-﻿table {
+﻿
+
+table {
 
     color:#000000;
     font-family:Arial,Arial, Helvetica, sans-serif;
@@ -8,10 +10,17 @@
 }
 td {
 border: 1px solid black;
-
+padding:5px;
 }
 
 thead {
 
 border: 1px solid grey;
+padding:5px;
+}
+
+th {
+
+border: 1px solid grey;
+padding:5px;
 }

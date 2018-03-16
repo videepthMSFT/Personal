@@ -1,0 +1,76 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>DOB</th>
+            <th>Index</th>
+            <th>iS First</th>
+            <th>is Last</th>
+            <th>even</th>
+            <th>Odd</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees;trackBy:trackByEmpCode;let i=index; let isFirst=first; let isLast=last; let isEven=even; let isOdd=odd;">
+            <td>{{employee.code | uppercase}}</td>
+            <td>{{employee.name | employeeTitle:employee.gender}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.annualSalary}}</td>
+            <td>{{employee.DOB | date:'fullDate' | uppercase}}</td>
+            <td>{{i}}</td>
+            <td>{{isFirst}}</td>
+            <td>{{isLast}}</td>
+            <td>{{isEven}}</td>
+            <td>{{isOdd}}</td>
+        </tr>
+        <tr *ngIf="!employees || employees.length==0">
+            <td colspan="5">
+                No Employees to display
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<br />
+
+<button (click)="getEmployees()">Refresh employees</button>
+<br/>
+<br />
+
+<br />
+<employee-count [all]="getTotalEmployesCount()" [male]="getTotalMaleEmployesCount()" [female]="getTotalFemaleEmployesCount()" 
+                (countRadioButtonChange)="onEmployeeCountRadioButtonChange($event)"></employee-count>
+<br/>
+<br />
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>DOB</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let employe of employes">
+            <tr  *ngIf="selectedEmployeeCountRadioButton =='All' || selectedEmployeeCountRadioButton==employe.gender">
+                <td>{{employe.code | uppercase}}</td>
+                <td>{{employe.name | employeeTitle:employe.gender}}</td>
+                <td>{{employe.gender}}</td>
+                <td>{{employe.annualSalary}}</td>
+                <td>{{employe.DOB | date:'fullDate' | uppercase}}</td>
+
+            </tr>
+        </ng-container>
+    </tbody>
+
+
+</table>

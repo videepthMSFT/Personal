@@ -5,6 +5,18 @@ h1 {
 }
 
 
+.boldClass {
+    font-weight:bold;
+}
+.italicClass {
+font-style:italic;
+}
+
+.colorClass {
+    color:red;
+}
+
+
 /*table {
 
     color:#000000;
